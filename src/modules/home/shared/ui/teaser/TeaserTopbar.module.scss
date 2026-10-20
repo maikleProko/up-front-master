@@ -1,0 +1,160 @@
+@use "shared/ui/styles/var" as v;
+
+.topbar {
+	width: 100%;
+	margin-top: 14px;
+	height: 75px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+}
+
+.logo {
+	cursor: pointer;
+	z-index: 1;
+}
+
+.logoMark {
+	height: 76px;
+	width: auto;
+}
+
+.menu {
+	width: 100%;
+	height: 75px;
+	position: absolute;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+
+	@media (max-width: v.$breakpoint-mobile) {
+		display: none;
+	}
+}
+
+.menuItems {
+	display: flex;
+	align-items: center;
+	gap: 38px;
+}
+
+.menuItem {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 62px;
+	min-height: 62px;
+	color: #d0cfcd;
+	font-weight: 700;
+	letter-spacing: 1px;
+	cursor: pointer;
+	transition: color 0.2s;
+	pointer-events: all;
+
+	&:hover {
+		color: #fff;
+	}
+}
+
+.menuItemDark {
+	color: #323232;
+
+	&:hover {
+		color: v.$color-primary;
+	}
+}
+
+.phone {
+	z-index: 1;
+}
+
+.actions {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	gap: 18px;
+}
+.cartLink,
+.userLink {
+	position: relative;
+	display: grid;
+	width: 24px;
+	height: 24px;
+	place-items: center;
+	color: #222;
+	transition: color 0.2s;
+}
+.cartLink:hover,
+.userLink:hover {
+	color: v.$color-primary;
+}
+.actionIcon {
+	display: block;
+	width: 23px;
+	height: 23px;
+	background-color: currentColor;
+	transition: background-color 0.2s;
+	-webkit-mask-position: center;
+	mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-size: contain;
+	mask-size: contain;
+}
+.cartIcon {
+	-webkit-mask-image: url("/images/header-cart.svg");
+	mask-image: url("/images/header-cart.svg");
+}
+.userIcon {
+	-webkit-mask-image: url("/images/header-user.svg");
+	mask-image: url("/images/header-user.svg");
+}
+.cartBadge {
+	color: #fff;
+	text-align: center;
+	background: #f3682f;
+	border: 2px solid #fff;
+	border-radius: 20px;
+	min-width: 25px;
+	height: 25px;
+	padding: 3px 3px;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 14px;
+	position: absolute;
+	top: -20px;
+	right: -15px;
+}
+
+@media (max-width: v.$breakpoint-mobile) {
+	.topbar .phone,
+	.topbar .actions {
+		display: none;
+	}
+}
+
+.topbar {
+	z-index: 5;
+}
+@media (min-width: 768px) and (max-width: 1050px) {
+	.menuItems {
+		gap: 18px;
+	}
+	.menuItem {
+		font-size: 13px;
+	}
+	.phone {
+		font-size: 13px;
+	}
+	.logoMark {
+		width: 75px;
+		height: auto;
+	}
+	.actions {
+		gap: 12px;
+	}
+}

@@ -1,0 +1,91 @@
+.teaser {
+	isolation: isolate;
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+}
+
+.background {
+	pointer-events: none;
+	z-index: 0;
+	background: #000;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+}
+
+.videoCover {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	background: #000;
+	opacity: 1;
+	pointer-events: none;
+	transition: opacity 1.2s ease;
+}
+
+.videoCoverReady {
+	opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.videoCover {
+		transition: none;
+	}
+}
+
+.video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	position: absolute;
+	inset: 0;
+}
+
+.shade {
+	width: calc(100% + 5px);
+	height: 100%;
+	object-fit: cover;
+	object-position: left;
+	position: absolute;
+	inset: 0;
+	left: -2px;
+	z-index: 1;
+}
+
+.content {
+	max-width: 1171px;
+	width: 100%;
+	z-index: 1;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding: 0 20px;
+}
+
+@media (min-width: 1200px) and (min-height: 900px) {
+	.teaser {
+		min-height: calc(100vh - 162px);
+	}
+}
+
+@media (max-width: 767px) {
+	.teaser {
+		min-height: calc(100vh + var(--mobile-menu-height, 0px));
+		transition: min-height 0.5s;
+	}
+	.teaser:has(button[aria-expanded="true"]) {
+		--mobile-menu-height: 330px;
+	}
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+	.teaser {
+		transition: none;
+	}
+}

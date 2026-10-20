@@ -1,0 +1,70 @@
+@use "shared/ui/styles/var" as v;
+@use "shared/ui/styles/button" as action;
+
+.content {
+	position: relative;
+	isolation: isolate;
+	background: #fff;
+	font-size: 14px;
+
+	&::before {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		content: "";
+		background:
+			linear-gradient(164deg, transparent 0 7%, rgba(166, 166, 163, 0.045) 7.1% 19%, transparent 19.1% 100%),
+			linear-gradient(164deg, transparent 0 10%, rgba(181, 181, 177, 0.055) 10.1% 16.5%, transparent 16.6% 100%),
+			linear-gradient(164deg, transparent 0 58%, rgba(166, 166, 163, 0.04) 58.1% 74%, transparent 74.1% 100%),
+			linear-gradient(164deg, transparent 0 62%, rgba(181, 181, 177, 0.05) 62.1% 70%, transparent 70.1% 100%);
+	}
+
+	> * {
+		position: relative;
+		z-index: 1;
+	}
+}
+
+.content > :first-child {
+	z-index: 2;
+}
+
+.status {
+	max-width: v.$content-width;
+	margin: 0 auto;
+	padding: 48px 20px;
+	color: v.$color-text-secondary;
+	button {
+		@include action.primary-action;
+	}
+}
+
+.page.page button:not([data-quantity-control]) {
+	box-sizing: border-box;
+	height: 62px;
+	min-height: 62px;
+}
+.page.page button[data-content-card] {
+	height: auto;
+	min-height: 62px;
+}
+
+.page :is(a, button, input) {
+	transition:
+		color 0.2s ease,
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		box-shadow 0.2s ease,
+		opacity 0.2s ease,
+		transform 0.2s ease,
+		filter 0.2s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+	.page *,
+	.page *::before,
+	.page *::after {
+		transition: none !important;
+		animation: none !important;
+	}
+}

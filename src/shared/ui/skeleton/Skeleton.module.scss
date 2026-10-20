@@ -1,0 +1,51 @@
+@keyframes shimmer {
+	from {
+		background-position: 200% 0;
+	}
+	to {
+		background-position: -200% 0;
+	}
+}
+.block,
+.imageLoading {
+	background-color: #eeeae7;
+	background-image: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.8) 48%, transparent 66%);
+	background-size: 200% 100%;
+	animation: shimmer 1.8s linear infinite;
+}
+.imageLoading {
+	aspect-ratio: 1;
+}
+.block {
+	display: block;
+	max-width: 100%;
+	flex-shrink: 0;
+	border-radius: 5px;
+}
+.lines {
+	display: grid;
+	gap: 14px;
+	width: 100%;
+}
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+	.block,
+	.imageLoading {
+		animation: none;
+		background-image: none;
+	}
+}
+
+.region > div {
+	width: 100%;
+	min-width: 0;
+}

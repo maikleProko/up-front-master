@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="3000" viewBox="0 0 1600 3000" preserveAspectRatio="none" fill="none">
+  <defs>
+    <linearGradient id="left" x1="0" y1="0" x2="620" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D9D9D9" stop-opacity=".24"/>
+      <stop offset=".45" stop-color="#D9D9D9" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#D9D9D9" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="right" x1="1600" y1="0" x2="1020" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D9D9D9" stop-opacity=".22"/>
+      <stop offset=".45" stop-color="#D9D9D9" stop-opacity=".07"/>
+      <stop offset="1" stop-color="#D9D9D9" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Asymmetric wedges, a broad folded plane and a small lower facet. -->
+  <path fill="url(#left)" d="M0 0H1060L0 305Z"/>
+  <path fill="url(#right)" d="M1600 260 950 470 1210 1060 1600 930Z"/>
+  <path fill="url(#right)" opacity=".5" d="M1600 600 1120 760 1600 1200Z"/>
+  <path fill="url(#left)" d="M0 1430 710 1210 480 1940 0 2120Z"/>
+  <path fill="url(#left)" opacity=".45" d="M0 1830 380 1710 580 2250 0 2430Z"/>
+  <path fill="url(#right)" d="M1600 2180 1130 2550 1600 2770Z"/>
+  <path fill="url(#left)" opacity=".6" d="M0 2760 810 3000H0Z"/>
+</svg>

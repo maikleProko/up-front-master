@@ -1,0 +1,9 @@
+@use "shared/ui/styles/button" as action;
+
+.button {
+	@include action.primary-action;
+}
+
+.block {
+	width: 100%;
+}

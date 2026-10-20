@@ -1,0 +1,163 @@
+@use "shared/ui/styles/var" as v;
+
+.mobileMenu {
+	display: none;
+}
+
+@media (max-width: v.$breakpoint-mobile) {
+	:global(html) {
+		overflow-anchor: none;
+	}
+	.mobileMenu {
+		--menu-color: #fff;
+		--menu-background: #{v.$color-dark-secondary};
+		display: block;
+		width: calc(100% + 40px);
+		margin: 0 -20px;
+		color: var(--menu-color);
+	}
+	.mobileMenu::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 89px;
+		background: var(--menu-background);
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.5s;
+	}
+	.open::before {
+		opacity: 1;
+	}
+	.light {
+		--menu-color: #323232;
+		--menu-background: #fff;
+	}
+	.toggle {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		z-index: 3;
+		width: 44px;
+		height: 62px;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: var(--menu-color);
+		cursor: pointer;
+		&:focus-visible {
+			outline: 2px solid currentColor;
+			outline-offset: 3px;
+		}
+	}
+	.icon,
+	.icon::before,
+	.icon::after {
+		position: absolute;
+		width: 30px;
+		height: 2px;
+		background: var(--menu-color);
+		transition: all 0.25s;
+	}
+	.icon {
+		top: 31px;
+		left: 7px;
+		&::before,
+		&::after {
+			content: "";
+			left: 0;
+		}
+		&::before {
+			top: -10px;
+		}
+		&::after {
+			top: 10px;
+		}
+	}
+	@media (hover: hover) {
+		.toggle:hover .icon::before {
+			top: -12px;
+		}
+		.toggle:hover .icon::after {
+			top: 12px;
+		}
+	}
+	.panel {
+		position: relative;
+		height: 0;
+		overflow: hidden;
+		background: transparent;
+		border: 0;
+		visibility: hidden;
+		text-align: center;
+		font-size: 18px;
+		font-weight: 400;
+		text-transform: uppercase;
+		transition:
+			height 0.5s,
+			background-color 0.5s,
+			visibility 0s 0.5s;
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 18px 0;
+			letter-spacing: 0.4em;
+		}
+		li {
+			margin-top: 20px;
+			padding: 5px 0;
+			line-height: 20px;
+			transition: all 0.2s;
+		}
+		li:first-child {
+			margin-top: 0;
+		}
+		a {
+			padding: 8px;
+			color: inherit;
+			transition: all 0.25s;
+		}
+		a:hover,
+		a:focus-visible {
+			letter-spacing: 0.5em;
+			text-decoration: underline;
+		}
+		a span {
+			letter-spacing: 0;
+		}
+	}
+	.open {
+		.icon {
+			transform: rotate(180deg);
+			background-color: transparent;
+			left: 2px;
+		}
+		.toggle .icon::before,
+		.toggle .icon::after {
+			top: 0;
+		}
+		.icon::before {
+			transform: rotate(45deg);
+		}
+		.icon::after {
+			transform: rotate(-45deg);
+		}
+		.panel {
+			height: 330px;
+			background: var(--menu-background);
+			visibility: visible;
+			transition-delay: 0s;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.mobileMenu *,
+	.mobileMenu::before,
+	.icon::before,
+	.icon::after {
+		transition: none;
+	}
+}

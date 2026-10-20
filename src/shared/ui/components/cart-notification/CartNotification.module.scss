@@ -1,0 +1,146 @@
+@use "shared/ui/styles/var" as v;
+
+.stack {
+	--notification-inset: 32px;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+	display: flex;
+	width: 384px;
+	max-width: calc(100% - 64px);
+	max-height: calc(100vh - 64px);
+	margin: var(--notification-inset);
+	flex-direction: column;
+	gap: 12px;
+	pointer-events: none;
+}
+
+.notification {
+	--notification-inset: 32px;
+	position: relative;
+	display: flex;
+	width: 100%;
+	overflow: hidden;
+	gap: 28px;
+	padding: 28px 20px 20px;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+	color: rgba(0, 0, 0, 0.7);
+	font-size: 16px;
+	line-height: 1.4;
+	letter-spacing: 1px;
+	transform: translateX(calc(100% + var(--notification-inset)));
+	animation: slideInOut 2s forwards cubic-bezier(0.33, 0, 0.66, 1.33);
+	pointer-events: auto;
+
+	&::before {
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		height: 8px;
+		background: v.$color-primary;
+		content: "";
+		transform-origin: left;
+		animation: countdown 2s forwards linear;
+	}
+}
+
+.icon {
+	display: grid;
+	flex: 0 0 51px;
+	width: 51px;
+	height: 51px;
+	margin-bottom: auto;
+	border-radius: 50%;
+	background: v.$color-primary;
+	place-items: center;
+
+	svg {
+		width: 35px;
+		height: 35px;
+		fill: none;
+		stroke: #fff;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 2.5;
+	}
+}
+
+.body {
+	min-width: 0;
+	padding-top: 4px;
+
+	strong {
+		display: block;
+		color: #222;
+		font-size: 20px;
+		font-weight: 600;
+	}
+
+	p {
+		display: -webkit-box;
+		overflow: hidden;
+		margin: 4px 0 0;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+	}
+}
+
+.close {
+	align-self: flex-start;
+	margin-left: auto;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: #555;
+	font: inherit;
+	font-size: 22px;
+	line-height: 1;
+	cursor: pointer;
+	transition: color 0.2s;
+
+	&:hover {
+		color: v.$color-primary;
+	}
+}
+
+@keyframes slideInOut {
+	15%,
+	66% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(calc(100% + var(--notification-inset)));
+	}
+}
+
+@keyframes countdown {
+	66%,
+	100% {
+		transform: scaleX(0);
+	}
+}
+
+@media (max-width: v.$breakpoint-mobile) {
+	.stack {
+		--notification-inset: 16px;
+		max-width: calc(100% - 32px);
+		max-height: calc(100vh - 32px);
+	}
+
+	.notification {
+		--notification-inset: 16px;
+		gap: 16px;
+		padding: 24px 16px 16px;
+	}
+
+	.icon {
+		flex-basis: 44px;
+		width: 44px;
+		height: 44px;
+	}
+}

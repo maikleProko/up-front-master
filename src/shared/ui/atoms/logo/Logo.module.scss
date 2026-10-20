@@ -1,0 +1,23 @@
+@use "shared/ui/styles/var" as v;
+
+.logo {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 6px;
+	font-weight: 800;
+	font-size: 20px;
+	letter-spacing: -0.02em;
+	color: inherit;
+}
+
+.mark {
+	color: v.$color-primary;
+}
+
+.wordmark {
+	font-weight: 600;
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	opacity: 0.7;
+}

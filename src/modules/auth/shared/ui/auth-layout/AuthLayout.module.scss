@@ -1,0 +1,19 @@
+@use "shared/ui/styles/var" as v;
+
+.layout {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: v.$color-bg-secondary;
+	padding: 20px;
+}
+
+.card {
+	width: 100%;
+	max-width: 380px;
+	background: v.$color-bg;
+	border-radius: 12px;
+	padding: 32px;
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}

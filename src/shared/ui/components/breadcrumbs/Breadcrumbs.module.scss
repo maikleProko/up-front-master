@@ -1,0 +1,52 @@
+@use "shared/ui/styles/var" as v;
+
+.breadcrumbs {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	color: #909090;
+	font-size: 14px;
+	line-height: 1.4;
+
+	a {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+
+	img {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+.breadcrumbItem {
+	display: contents;
+}
+
+@media (max-width: v.$breakpoint-mobile) {
+	.breadcrumbs {
+		flex-wrap: wrap;
+		overflow: visible;
+		font-size: 14px;
+		white-space: normal;
+		img {
+			flex: 0 0 20px;
+		}
+		a {
+			min-width: 0;
+			overflow-wrap: anywhere;
+		}
+	}
+	.breadcrumbItem {
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+		max-width: 100%;
+		min-width: 0;
+		> span {
+			min-width: 0;
+			overflow-wrap: anywhere;
+		}
+	}
+}

@@ -1,0 +1,8 @@
+@use "shared/ui/styles/var" as v;
+
+.price {
+	font-weight: 700;
+	font-size: 20px;
+	color: v.$color-text;
+	white-space: nowrap;
+}

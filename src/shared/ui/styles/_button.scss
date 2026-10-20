@@ -1,0 +1,33 @@
+@use "shared/ui/styles/var" as v;
+
+@mixin primary-action {
+	border: none;
+	background: v.$color-primary;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 700;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 32px;
+	cursor: pointer;
+	filter: drop-shadow(0 0 20px rgba(243, 104, 47, 0.5));
+	transition: all 0.2s;
+
+	> * {
+		filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.52));
+	}
+
+	&:hover:not(:disabled) {
+		background: v.$color-primary-hover;
+		color: #fff;
+		filter: drop-shadow(0 0 25px rgba(255, 129, 78, 0.6));
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		background: v.$color-text-secondary;
+		filter: none;
+	}
+}

@@ -1,0 +1,55 @@
+.fixedElements {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.24));
+	opacity: 0;
+	transform: translateY(-100%);
+	pointer-events: none;
+	transition: all 0.3s;
+
+	&.visible {
+		opacity: 1;
+		transform: translateY(0);
+		pointer-events: all;
+	}
+}
+
+.topbarOuter {
+	padding-bottom: 15px;
+	background: #ffffff;
+	width: 100%;
+	height: min-content;
+	display: flex;
+	justify-content: center;
+}
+
+.menuSpacer {
+	display: none;
+}
+@media (max-width: 767px) {
+	.menuSpacer {
+		display: block;
+		height: 0;
+		transition: height 0.5s;
+	}
+	.menuSpacerOpen {
+		height: 330px;
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.menuSpacer {
+		transition: none;
+	}
+}
+
+@media (max-width: 767px) {
+	.topbarOuter {
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.topbarOuter:has(button[aria-expanded="true"]) {
+		border-bottom: 0;
+	}
+}

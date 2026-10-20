@@ -1,0 +1,131 @@
+@use "shared/ui/styles/var" as v;
+
+.body {
+	margin-top: 150px;
+	padding-bottom: 120px;
+	animation: bodyReveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes bodyReveal {
+	from {
+		opacity: 0;
+		transform: translateX(-60px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.body {
+		animation: none;
+	}
+}
+
+.title {
+	filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.52));
+	font-size: 46px;
+	font-weight: 700;
+	color: #fff;
+	max-width: 645px;
+	line-height: 52px;
+	letter-spacing: 5px;
+
+	@media (max-width: v.$breakpoint-mobile) {
+		font-size: 40px;
+		line-height: 48px;
+		letter-spacing: 2px;
+	}
+}
+
+.description {
+	color: v.$color-muted-on-dark;
+	max-width: 420px;
+	line-height: 22px;
+	letter-spacing: 1px;
+	margin-top: 15px;
+	filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.52));
+	font-size: 16px;
+}
+
+.body .search {
+	width: 586px;
+	max-width: 100%;
+	margin-top: 46px;
+	box-shadow: none;
+	filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+
+	&:focus-within {
+		box-shadow: 0 0 0 0.3rem var(--search-focus-color, #da987d96);
+	}
+
+	@media (max-width: v.$breakpoint-mobile) {
+		width: 100%;
+	}
+}
+
+.mobileActions {
+	display: none;
+}
+
+@media (max-width: v.$breakpoint-mobile) {
+	.body {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin-top: -120px;
+		padding: 40px 0;
+	}
+
+	.mobileActions {
+		display: flex;
+		gap: 10px;
+		width: 100%;
+		margin-top: 18px;
+	}
+
+	.catalogButton,
+	.dealerButton {
+		flex: 1;
+		min-width: 0;
+		min-height: 52px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 10px 6px;
+		border-radius: 7px;
+		font: inherit;
+		font-size: 17px;
+		font-weight: 700;
+		white-space: nowrap;
+	}
+
+	.catalogButton {
+		background: v.$color-primary;
+		color: #fff;
+	}
+
+	.dealerButton {
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		background: rgba(255, 255, 255, 0.1);
+		color: rgba(255, 255, 255, 0.7);
+		cursor: not-allowed;
+	}
+}
+
+.body .search button {
+	height: 62px;
+	min-height: 62px;
+}
+.catalogButton,
+.dealerButton {
+	height: 62px;
+	min-height: 62px;
+}
+@media (max-width: 767px) {
+	.body .search {
+		height: 78px;
+	}
+}

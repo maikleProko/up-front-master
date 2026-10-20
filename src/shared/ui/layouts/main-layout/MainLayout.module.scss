@@ -1,0 +1,37 @@
+.layout {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	overflow-x: clip;
+}
+
+.topbarOuter {
+	width: 100%;
+	height: min-content;
+	display: flex;
+	justify-content: center;
+	padding-bottom: 15px;
+	background: #fff;
+	filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.24));
+	position: relative;
+	z-index: 10;
+}
+
+.stickyTopbar {
+	position: sticky;
+	top: 0;
+}
+
+.content {
+	flex: 1;
+	padding: 40px 20px 230px;
+}
+
+@media (max-width: 767px) {
+	.topbarOuter {
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.topbarOuter:has(button[aria-expanded="true"]) {
+		border-bottom: 0;
+	}
+}

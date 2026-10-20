@@ -1,0 +1,159 @@
+@use "shared/ui/styles/var" as v;
+
+.advantage {
+	flex: 1 1 220px;
+	min-width: 0;
+	width: 279px;
+	padding: 24px 16px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	height: 320px;
+	z-index: 1;
+
+	@media (max-width: v.$breakpoint-desktop) {
+		height: auto;
+	}
+
+	@media (min-width: 768px) {
+		&::before {
+			content: "";
+			position: absolute;
+			top: -8.5%;
+			left: 0;
+			width: 100%;
+			height: 132%;
+		}
+
+		&:hover,
+		&:focus-within {
+			z-index: 2;
+
+			.fakeBackground {
+				width: 105%;
+				height: 132%;
+				left: -2.5%;
+				top: -8.5%;
+				background: #111111;
+			}
+
+			.imageOuter {
+				filter: brightness(0) invert(1);
+			}
+
+			.title {
+				color: #ffffff;
+			}
+
+			.description {
+				color: #ffffff;
+			}
+
+			.cardButton {
+				opacity: 1;
+				pointer-events: auto;
+			}
+		}
+	}
+}
+
+.fakeBackground {
+	pointer-events: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #ffffff;
+	z-index: 0;
+	transition: all 0.2s;
+}
+
+.imageOuter {
+	width: 100%;
+	height: 127px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	position: relative;
+	z-index: 1;
+	transition: filter 0.2s;
+}
+
+.image {
+	max-height: 76px;
+	width: auto;
+	transition: all 0.2s;
+}
+
+.title {
+	width: 100%;
+	color: #323232;
+	font-weight: 700;
+	text-align: center;
+	margin-top: 29px;
+	position: relative;
+	z-index: 1;
+	transition: all 0.2s;
+}
+
+.descriptionOuter {
+	width: 100%;
+	display: flex;
+	margin-top: 22px;
+	justify-content: center;
+	position: relative;
+	z-index: 1;
+	transition: all 0.2s;
+}
+
+.description {
+	width: 100%;
+	max-width: 189px;
+	text-align: center;
+	color: #c5c5c5;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+button.cardButton {
+	pointer-events: none;
+	margin-top: auto;
+	height: 62px;
+	font-size: 16px;
+	position: absolute;
+	bottom: -50px;
+	left: 15px;
+	width: calc(100% - 30px);
+	max-width: 249px;
+	opacity: 0;
+	z-index: 1;
+	transition: all 0.2s;
+}
+
+.mobileLink {
+	display: none;
+}
+@media (max-width: v.$breakpoint-mobile) {
+	.advantage {
+		width: 100%;
+		flex: 0 0 auto;
+	}
+	.mobileLink {
+		display: block;
+		position: absolute;
+		inset: 0;
+		z-index: 3;
+		transition: background-color 0.2s;
+		&:active {
+			background-color: rgba(0, 0, 0, 0.08);
+		}
+		&:focus-visible {
+			outline: 2px solid v.$color-primary;
+			outline-offset: -2px;
+		}
+	}
+	button.cardButton {
+		display: none;
+	}
+}

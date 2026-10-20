@@ -1,0 +1,40 @@
+@use "shared/ui/styles/var" as v;
+
+.header {
+	height: v.$header-height;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid v.$color-border;
+	background: v.$color-bg;
+}
+
+.inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.nav {
+	display: flex;
+	gap: 24px;
+
+	@media (max-width: v.$breakpoint-mobile) {
+		display: none;
+	}
+}
+
+.navLink {
+	color: v.$color-text;
+	font-weight: 500;
+
+	&:hover {
+		color: v.$color-primary;
+	}
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}

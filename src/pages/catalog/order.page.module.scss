@@ -1,0 +1,318 @@
+@use "shared/ui/styles/var" as v;
+
+.page {
+	position: relative;
+	color: #1a1a1a;
+}
+.content {
+	position: relative;
+	z-index: 1;
+}
+.page h1 {
+	margin: 16px 0 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid v.$color-border;
+	font-size: 30px;
+	line-height: 1.2;
+}
+.orderLayout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 376px;
+	align-items: start;
+	gap: 21px;
+	margin-top: 40px;
+}
+.formColumn {
+	min-width: 0;
+}
+.fields {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+	gap: 16px;
+}
+.fields label {
+	grid-column: span 2;
+}
+.fields .fullField {
+	grid-column: 1 / -1;
+}
+.fields .postcode {
+	grid-column: span 1;
+}
+.fields label:nth-child(7) {
+	grid-column: 1 / span 3;
+}
+.fields label:nth-child(8) {
+	grid-column: span 3;
+}
+.fields label,
+.alternateAddress,
+.additional label {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	font-size: 14px;
+}
+.fields input,
+.alternateAddress input,
+.additional textarea {
+	width: 100%;
+	border: 1px solid #e6e6e6;
+	border-radius: 6px;
+	background: #fff;
+	color: #1a1a1a;
+	font: inherit;
+	font-size: 16px;
+	outline: none;
+	transition:
+		border-color 0.2s,
+		box-shadow 0.2s;
+}
+.fields input,
+.alternateAddress input {
+	height: 49px;
+	padding: 0 15px;
+}
+.fields input:focus,
+.alternateAddress input:focus,
+.additional textarea:focus {
+	border-color: v.$color-primary;
+	box-shadow: 0 0 0 3px rgba(243, 104, 47, 0.12);
+}
+.fields input::placeholder,
+.alternateAddress input::placeholder,
+.additional textarea::placeholder {
+	color: #999;
+}
+.checkbox {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	width: fit-content;
+	margin-top: 20px;
+	color: #4d4d4d;
+	font-size: 14px;
+	cursor: pointer;
+}
+.checkbox input {
+	width: 20px;
+	height: 20px;
+	margin: 0;
+	accent-color: v.$color-primary;
+}
+.alternateAddress {
+	margin-top: 20px;
+}
+.additional {
+	margin-top: 32px;
+	padding-top: 32px;
+	border-top: 1px solid #e6e6e6;
+}
+.additional h2 {
+	margin: 0 0 20px;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 1.5;
+}
+.additional textarea {
+	min-height: 100px;
+	padding: 13px 15px;
+	resize: vertical;
+}
+.summary {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	padding: 24px;
+	border: 1px solid #e6e6e6;
+	border-radius: 8px;
+	background: #fff;
+}
+.summary h2 {
+	margin: 0;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 1.5;
+}
+.orderItems {
+	display: flex;
+	flex-direction: column;
+}
+.orderItem {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	min-height: 60px;
+	font-size: 14px;
+}
+.orderItem > strong {
+	flex: 0 0 auto;
+	font-weight: 500;
+	white-space: nowrap;
+}
+.itemInfo {
+	display: flex;
+	align-items: center;
+	min-width: 0;
+	gap: 6px;
+}
+.itemInfo img {
+	flex: 0 0 60px;
+	width: 60px;
+	height: 60px;
+	object-fit: contain;
+}
+.itemInfo span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.itemInfo small {
+	flex: 0 0 auto;
+	font-size: 14px;
+}
+.empty {
+	margin: 0;
+	color: #808080;
+}
+.totals > div {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 12px 0;
+	border-bottom: 1px solid #e6e6e6;
+	color: #4d4d4d;
+	font-size: 14px;
+}
+.totals strong {
+	color: #1a1a1a;
+	font-weight: 500;
+}
+.totals > .grandTotal {
+	align-items: center;
+	border-bottom: 0;
+	font-size: 16px;
+}
+.grandTotal strong {
+	font-size: 18px;
+	font-weight: 600;
+}
+.payment {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.payment legend {
+	margin-bottom: 12px;
+	padding: 0;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 1.5;
+}
+.payment label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	width: fit-content;
+	color: #4d4d4d;
+	font-size: 14px;
+	cursor: pointer;
+}
+.payment input {
+	width: 20px;
+	height: 20px;
+	margin: 0;
+	accent-color: v.$color-primary;
+}
+.submit {
+	width: 100%;
+	padding: 16px 40px;
+	border: 0;
+	border-radius: 6px;
+	background: v.$color-primary;
+	box-shadow: 0 4px 10px rgba(243, 104, 47, 0.55);
+	color: #fff;
+	font: inherit;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition:
+		background-color 0.2s,
+		box-shadow 0.2s;
+}
+.submit:hover:not(:disabled) {
+	background: v.$color-primary-hover;
+	box-shadow: 0 4px 16px rgba(243, 104, 47, 0.7);
+}
+.submit:disabled {
+	cursor: not-allowed;
+	background: #b3b3b3;
+	box-shadow: none;
+}
+
+@media (max-width: 1100px) {
+	.orderLayout {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.summary {
+		width: 100%;
+		max-width: 500px;
+		min-width: 0;
+	}
+}
+
+@media (max-width: v.$breakpoint-mobile) {
+	.page h1 {
+		font-size: 25px;
+	}
+	.orderLayout {
+		margin-top: 28px;
+	}
+	.formColumn {
+		width: 100%;
+		max-width: 620px;
+	}
+	.fields {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.fields label,
+	.fields .postcode,
+	.fields label:nth-child(7),
+	.fields label:nth-child(8) {
+		grid-column: auto;
+		min-width: 0;
+	}
+	.fields .fullField {
+		grid-column: 1 / -1;
+	}
+	.additional h2 {
+		font-size: 21px;
+	}
+	.summary {
+		padding: 20px;
+	}
+	.orderItem,
+	.itemInfo,
+	.totals > div {
+		min-width: 0;
+	}
+	.itemInfo {
+		flex: 1;
+	}
+	.itemInfo span {
+		min-width: 0;
+	}
+}
+
+@media (max-width: 540px) {
+	.fields {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.fields .fullField {
+		grid-column: 1;
+	}
+}

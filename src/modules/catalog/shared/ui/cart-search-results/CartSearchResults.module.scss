@@ -1,0 +1,52 @@
+@use "shared/ui/styles/var" as v;
+.results {
+	margin-top: 40px;
+}
+.heading {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 24px;
+}
+.heading h2 {
+	margin: 0;
+	font-size: 24px;
+	line-height: 1.3;
+}
+.heading span {
+	color: #808080;
+	font-size: 14px;
+}
+.list {
+	display: grid;
+	gap: 16px;
+}
+.message {
+	padding: 24px;
+	border: 1px solid #e6e6e6;
+	border-radius: 8px;
+	background: #fff;
+	font-size: 16px;
+	overflow-wrap: anywhere;
+}
+.message button {
+	border: 0;
+	padding: 12px 20px;
+	background: v.$color-primary;
+	color: #fff;
+	font: inherit;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	&:hover {
+		background: v.$color-primary-hover;
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.results *,
+	.results *::before {
+		transition: none !important;
+		animation: none !important;
+	}
+}

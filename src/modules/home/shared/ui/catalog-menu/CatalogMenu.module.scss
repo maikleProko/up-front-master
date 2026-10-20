@@ -1,0 +1,148 @@
+@use "shared/ui/styles/var" as v;
+
+.menu {
+	--panel-bg: #151515;
+	--panel-text: #eee;
+	--panel-border: #ffffff26;
+	pointer-events: auto;
+	color: #d0cfcd;
+	&::before {
+		content: "";
+		position: absolute;
+		inset: -14px calc((min(1171px, 100vw) - 100vw) / 2 - 20px) -15px;
+		background: var(--panel-bg);
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.3s;
+		z-index: -1;
+	}
+}
+.light {
+	--panel-bg: #fff;
+	--panel-text: #323232;
+	--panel-border: #e6e6e6;
+	color: #323232;
+}
+.trigger {
+	display: flex;
+	align-items: center;
+	height: 75px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	a {
+		color: inherit;
+		padding: 20px 0;
+	}
+	button {
+		display: grid;
+		place-items: center;
+		width: 28px;
+		height: 44px;
+		border: 0;
+		color: inherit;
+		background: transparent;
+		cursor: pointer;
+	}
+	svg {
+		transition: transform 0.3s;
+	}
+}
+.menu a:focus-visible,
+.menu button:focus-visible {
+	outline: 2px solid v.$color-primary;
+	outline-offset: 4px;
+}
+.panel {
+	position: absolute;
+	top: 100%;
+	left: calc((min(1171px, 100vw) - 100vw) / 2 - 20px);
+	width: 100vw;
+	padding-top: 15px;
+	color: var(--panel-text);
+	visibility: hidden;
+	opacity: 0;
+	transform: translateY(-12px);
+	clip-path: inset(0 0 100%);
+	transition:
+		opacity 0.25s,
+		transform 0.3s,
+		clip-path 0.35s,
+		visibility 0.35s;
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 15px 0 0;
+		background: var(--panel-bg);
+		box-shadow: 0 22px 28px #0002;
+	}
+}
+.inner {
+	position: relative;
+	max-width: v.$content-width;
+	margin: auto;
+	padding: 26px 20px 34px;
+	max-height: min(65vh, 540px);
+	overflow-y: auto;
+}
+.heading {
+	display: flex;
+	justify-content: space-between;
+	gap: 24px;
+	padding-bottom: 24px;
+	border-bottom: 1px solid var(--panel-border);
+	font-size: 13px;
+	letter-spacing: 1.5px;
+}
+.heading a {
+	color: v.$color-primary;
+	letter-spacing: 0;
+	font-size: 16px;
+}
+.categories {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0 36px;
+}
+.categories a {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+	min-height: 64px;
+	padding: 16px 0;
+	color: inherit;
+	border-bottom: 1px solid var(--panel-border);
+	font-size: 16px;
+	transition: color 0.2s;
+}
+.categories a > span:last-child {
+	color: v.$color-primary;
+}
+.categories a:hover,
+.trigger a:hover {
+	color: v.$color-primary;
+}
+.open {
+	&::before {
+		opacity: 1;
+	}
+	.panel {
+		visibility: visible;
+		opacity: 1;
+		transform: translateY(0);
+		clip-path: inset(0 0 -50px);
+	}
+	.trigger {
+		color: v.$color-primary;
+	}
+	.trigger svg {
+		transform: rotate(180deg);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.menu::before,
+	.panel,
+	.trigger svg {
+		transition: none;
+	}
+}
